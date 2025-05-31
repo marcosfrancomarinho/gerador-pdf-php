@@ -1,0 +1,19 @@
+{
+    "name": "marcos/php",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "marcosmarinho",
+            "email": "marcosmarinho19998@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "dompdf/dompdf": "^3.1"
+    }
+}

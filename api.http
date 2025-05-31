@@ -1,0 +1,9 @@
+###
+POST http://localhost:8080/
+Content-Type: application/json
+
+{
+  "title": "Relatório Mensal - Maio de 2025",
+  "path": "C:/Users/marcos/Desktop/php/pdfs",
+  "content": "Este relatório detalha as principais atividades realizadas durante o mês de maio de 2025. Nele, estão incluídos os dados sobre produção, vendas, marketing e suporte ao cliente.\n\nProdução: A equipe conseguiu aumentar a produção em 15% em comparação ao mês anterior, graças à otimização dos processos internos e à implementação de novas tecnologias.\n\nVendas: As vendas totais atingiram R$ 1.200.000,00, com destaque para o lançamento do produto X, que teve uma aceitação superior às expectativas.\n\nMarketing: Foram realizadas 3 campanhas digitais, com um alcance total de 500.000 pessoas, resultando em um aumento significativo no reconhecimento da marca.\n\nSuporte ao Cliente: O índice de satisfação atingiu 92%, com melhorias no tempo de resposta e na resolução de problemas.\n\nConclusão: O mês de maio foi extremamente positivo para a empresa, consolidando tendências de crescimento e estabelecendo bases sólidas para os próximos períodos."
+}
