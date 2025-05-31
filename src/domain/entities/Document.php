@@ -28,9 +28,9 @@ class Document
 
     public function getNameFilePdf(): string
     {
-        $titleFormat = preg_replace('/\s+/', '', $this->title);
-        $name = $titleFormat . rand(1, 9999999999) . '.pdf';
-        return $name;
+        $titleFormat = preg_replace('/[\s\-]+/', '_', $this->title);
+        $name = $titleFormat . '_' . rand(1, 9999999999) . '.pdf';
+        return strtolower($name);
     }
 
     public function getPath(): string

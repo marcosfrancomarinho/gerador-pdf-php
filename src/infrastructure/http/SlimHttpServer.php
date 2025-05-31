@@ -15,7 +15,7 @@ class SlimHttpServer implements HttpServer
         $this->app = AppFactory::create();
     }
 
-    public function listen(): void
+    public function run(): void
     {
         $this->app->run();
     }

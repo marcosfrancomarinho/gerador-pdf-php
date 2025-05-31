@@ -2,8 +2,8 @@
 
 namespace App\presentation\routers;
 
-use App\domain\interfaces\HttpControllers;
 use App\domain\interfaces\HttpServer;
+use App\shared\Container\Container;
 
 class Routers
 {
@@ -13,8 +13,10 @@ class Routers
         $this->http_server = $http_server;
     }
 
-    public function register(HttpControllers $http_controllers)
+    public function register(Container $container)
     {
-        $this->http_server->on('post', '/', [$http_controllers, 'execute']);
+        ["createPdfControllers" => $create] = $container->dependencie();
+
+        $this->http_server->on('post', '/', [$create, 'execute']);
     }
 }
