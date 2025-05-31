@@ -13,12 +13,12 @@ use App\presentation\routers\Routers;
 
 function main(): void
 {
-    $CreatorPdf = new DomCreatorPdf() ?? new TcCreatorPdf();
-    $GeneretorPdfHandler = new GeneretorPdfHandler($CreatorPdf);
-    $CreatorPdfControllers = new CreatorPdfControllers($GeneretorPdfHandler);
-    $HttpServer = new SlimHttpServer();
-    $Routers = new Routers($HttpServer);
-    $Routers->register($CreatorPdfControllers);
-    $HttpServer->listen();
+    $creatorPdf = new DomCreatorPdf() ?? new TcCreatorPdf();
+    $generetorPdfHandler = new GeneretorPdfHandler($creatorPdf);
+    $creatorPdfControllers = new CreatorPdfControllers($generetorPdfHandler);
+    $httpServer = new SlimHttpServer();
+    $routers = new Routers($httpServer);
+    $routers->register($creatorPdfControllers);
+    $httpServer->listen();
 }
 main();
