@@ -1,12 +1,10 @@
 <?php
 
 namespace App\presentation\controllers;
-
 use App\application\DTO\DocumentRequestDTO;
 use App\application\usecase\GeneretorPdfHandler;
 use App\domain\interfaces\HttpContext;
 use App\domain\interfaces\HttpControllers;
-use Exception;
 
 
 class CreatorPdfControllers implements HttpControllers
@@ -24,7 +22,7 @@ class CreatorPdfControllers implements HttpControllers
             $input = new DocumentRequestDTO($title, $content, $path);
             $output = $this->generetorPdfHandler->save($input);
             return $httpContext->send(200, ["message" => $output->message, "name_file" => $output->name]);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return $httpContext->send(400, ["error" => $e->getMessage()]);
         }
     }

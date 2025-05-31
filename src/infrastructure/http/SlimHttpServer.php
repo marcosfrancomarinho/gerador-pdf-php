@@ -2,7 +2,6 @@
 
 namespace App\infrastructure\http;
 
-use App\domain\interfaces\HttpControllers;
 use App\domain\interfaces\HttpServer;
 use Slim\Factory\AppFactory;
 use Slim\Psr7\Request;
@@ -15,16 +14,17 @@ class SlimHttpServer implements HttpServer
     {
         $this->app = AppFactory::create();
     }
+
     public function listen(): void
     {
         $this->app->run();
     }
 
-    public function register(HttpControllers $http_controllers): void
+    public function on(string $method, string $path, callable $execute): void
     {
-        $this->app->post("/", function (Request $request, Response $response) use ($http_controllers) {
+        $this->app->$method($path, function (Request $request, Response $response) use ($execute) {
             $http = new SlimHttpContext($request, $response);
-            return $http_controllers->execute($http);
+            return $execute($http);
         });
     }
 }
