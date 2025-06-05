@@ -10,20 +10,18 @@ class Document
     private function __construct(
         private string $title,
         private  string $content,
-        private string $path
     ) {}
 
-    public static function create(string $title, string $content, string $path): Document
+    public static function create(string $title, string $content): Document
     {
-        self::validate($title, $content, $path);
-        return new Document($title, $content, $path);
+        self::validate($title, $content);
+        return new Document($title, $content);
     }
 
-    private static function validate(string $title, string $content, string $path): void
+    private static function validate(string $title, string $content): void
     {
         if (!$title || empty($title)) throw new Exception("title invalid.");
         if (!$content || empty($content)) throw new Exception("content invalid.");
-        if (!$path || empty($path)) throw new Exception("path invalid.");
     }
 
     public function getNameFilePdf(): string
@@ -33,10 +31,6 @@ class Document
         return strtolower($name);
     }
 
-    public function getPath(): string
-    {
-        return rtrim($this->path, '/\\') . '/' . $this->getNameFilePdf();
-    }
 
     public function getHtmlToGeneretePdf(): string
     {

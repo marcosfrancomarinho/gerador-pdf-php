@@ -5,10 +5,10 @@ namespace App\application\DTO;
 class DocumentResponseDTO
 {
     public string $name;
-    public string $message;
-    public function __construct(string $name, string $message)
+    public string $file;
+    public function __construct(string $name, string $file)
     {
-        $this->message = $message;
+        $this->file = $file;
         $this->name = $name;
     }
 }

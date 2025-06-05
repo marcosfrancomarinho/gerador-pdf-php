@@ -17,10 +17,10 @@ class GeneretorPdfHandler
 
     public function save(DocumentRequestDTO $input): DocumentResponseDTO
     {
-        $document = Document::create($input->title, $input->content, $input->path);
-        $this->creatorPdf->save($document);
+        $document = Document::create($input->title, $input->content);
+        $file =  $this->creatorPdf->save($document);
 
-        $responseGeneretePdf = new DocumentResponseDTO($document->getNameFilePdf(), 'pdf genereted with success');
+        $responseGeneretePdf = new DocumentResponseDTO($document->getNameFilePdf(), $file);
         return $responseGeneretePdf;
     }
 }

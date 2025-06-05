@@ -8,7 +8,7 @@ use TCPDF;
 
 class TcCreatorPdf implements CreatorPdf
 {
-    public function save(Document $document): void
+    public function save(Document $document):mixed
     {
         $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);
@@ -17,6 +17,6 @@ class TcCreatorPdf implements CreatorPdf
         $pdf->AddPage();
         $pdf->writeHTML($document->getHtmlToGeneretePdf());
         $output = $pdf->Output('', 'S');
-        file_put_contents($document->getPath(), $output);
+        return $output;
     }
 }

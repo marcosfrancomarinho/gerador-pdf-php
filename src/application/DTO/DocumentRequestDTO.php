@@ -7,10 +7,9 @@ class DocumentRequestDTO
     public string $title;
     public string $content;
     public string $path;
-    public  function __construct(string $title,  string $content, string $path)
+    public  function __construct(string $title,  string $content)
     {
         $this->title = $title;
-        $this->path = $path;
         $this->content = $content;
     }
 }

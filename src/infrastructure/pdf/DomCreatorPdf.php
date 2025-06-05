@@ -8,13 +8,13 @@ use Dompdf\Dompdf;
 
 class DomCreatorPdf implements CreatorPdf
 {
-    public function save(Document $document): void
+    public function save(Document $document):mixed
     {
         $dompdf = new Dompdf();
         $html = $document->getHtmlToGeneretePdf();
         $dompdf->loadHtml($html);
         $dompdf->render();
         $output = $dompdf->output();
-        file_put_contents($document->getPath(), $output);
+       return $output;
     }
 }

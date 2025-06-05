@@ -6,5 +6,5 @@ use App\domain\entities\Document;
 
 interface CreatorPdf
 {
-    function  save(Document $document): void;
+    function  save(Document $document):mixed;
 }
