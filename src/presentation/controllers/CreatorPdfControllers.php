@@ -24,7 +24,7 @@ class CreatorPdfControllers implements HttpControllers
             $output = $this->generetorPdfHandler->save($input);
             return $httpContext->send(200, ["file" => $output->file, "name_file" => $output->name]);
         } catch (\Throwable $e) {
-            return $httpContext->send(400, ["error" => $e->getMessage()]);
+            return $httpContext->handleError(400, ["error" => $e->getMessage()]);
         }
     }
 }

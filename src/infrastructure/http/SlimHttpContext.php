@@ -19,7 +19,10 @@ class SlimHttpContext implements HttpContext
     function send(int $status, mixed $datas): mixed
     {
         $this->response->getBody()->write($datas["file"]);
-        return $this->response->withHeader("Content-Type", "application/pdf")->withStatus($status)->withHeader('Content-Disposition', 'inline; filename=' . $datas["name_file"]);
+        return $this->response
+            ->withHeader("Content-Type", "application/pdf")
+            ->withHeader('Content-Disposition', 'inline; filename=' . $datas["name_file"])
+            ->withStatus($status);
     }
     public function getRequestBody()
     {
@@ -32,5 +35,11 @@ class SlimHttpContext implements HttpContext
             "title" => $datas['title'] ?? "",
             "content" => $datas['content'] ?? ""
         ];
+    }
+
+    function handleError(int $status, mixed $error)
+    {
+        $this->response->getBody()->write(json_encode($error));
+        return $this->response->withHeader("Content-Type", "application/json")->withStatus($status);
     }
 }
